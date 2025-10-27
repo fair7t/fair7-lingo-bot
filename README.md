@@ -110,3 +110,7 @@ This project is licensed under the MIT License
 3. Add the project to your CV or portfolio as:  
    *“Built a semantic-search AI Telegram bot using transformer embeddings (NLP/ML).”*
 
+---
+
+> ✨ *FAIR7 LINGO merges Machine Learning and Telegram UX — learn smarter, not harder.*
+
