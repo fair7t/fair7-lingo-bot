@@ -12,7 +12,7 @@
 ## ✨ Features
 
 - 📘 **Bilingual Definitions** — English ⇄ Russian word explanations  
-- 🧠 **Semantic Search (ML)** — find words by meaning or description using sentence-transformers  
+- 🧠 **Semantic Search (ML)** — find words by meaning or description using transformer embeddings  
 - 🔁 **SRS Repetition** — spaced repetition system (SM-2 algorithm) for efficient memorization  
 - 🎨 **Word Visualization** — automatic image search via Wikimedia Commons API  
 - 🔊 **Pronunciation (TTS)** — speech generation via Edge-TTS (Jenny Neural voice)  
@@ -22,9 +22,38 @@
 
 ---
 
+## 🧩 Example Interaction
+
+Here’s how **FAIR7 LINGO** works in action 👇  
+
+| 🧠 Definition | 🎨 Visualization | 🔄 Synonym & Reverse Search |
+|:--------------:|:----------------:|:---------------------------:|
+| ![Definition Example](assets/demo.png) | ![Visualization Example](assets/demo%202.png) | ![Synonym Example](assets/demo%203.png) |
+
+### 💬 Description
+- Provides **bilingual word definitions** (English ↔ Russian) with ML-based semantic understanding.  
+- Shows **visualizations** for any concept via Wikimedia Commons.  
+- Supports **reverse meaning lookup** — type _"человек, который частично робот"_ → gets **cyborg** 🤖.  
+
+---
+
+## 🧭 Command Overview
+
+| Command | Function |
+|----------|-----------|
+| `/start` | Launch the bot and initialize the database |
+| `/add <word>` | Add a word to your personal vocabulary list |
+| `/syn <word>` | Find similar words or synonyms using transformer embeddings |
+| `/review` | Practice words with spaced repetition (SM-2 algorithm) |
+| `/help` | Show command list |
+| 🖼️ **Button “Visualization”** | Fetches images from Wikimedia Commons |
+| 🌍 **Reverse Search** | Detects if input is in Russian or English and finds equivalent meaning |
+
+---
+
 ## 🧠 Machine Learning Behind FAIR7 LINGO
 
-The bot uses a **Transformer-based sentence embedding model**  
+The bot uses a **Transformer-based sentence embedding model:**  
 [`sentence-transformers/all-MiniLM-L6-v2`](https://www.sbert.net/docs/pretrained_models.html)  
 to convert text into high-dimensional vector representations.
 
@@ -33,43 +62,23 @@ This enables **semantic similarity search**, so the bot can:
 - rank related terms and synonyms  
 - perform reverse lookup from meaning → word  
 
-### Simplified Architecture
-┌────────────┐ ┌────────────────────────────┐
-│ Telegram │──▶──▶│ FAIR7 LINGO Core (ML/NLP)│
-└────────────┘ └────────────────────────────┘
-▲ │
-│ ▼
-│ Sentence-Transformer Model
-│ │
-│ ▼
-│ SQLite + Cache + SRS
-│ │
-▼ ▼
-Translation APIs / Wikimedia / TTS
-
-
 ---
 
-## 🚀 Quick Start
+### 🧱 Simplified Architecture
 
-```bash
-git clone https://github.com/fair7t/fair7-lingo-bot.git
-cd fair7-lingo-bot
-pip install -r requirements.txt
-cp .env.example .env  # insert your Telegram bot token
-python src/tg_vocab_bot.py
-
-Environment Variables
+⚙️ Environment Variables
 Variable	Description
 TELEGRAM_BOT_TOKEN	Telegram bot token from @BotFather
-DEEPL_API_KEY	(optional) DeepL API key for translation
-🧩 Example Interaction
-User:  elephant  
-Bot:   🐘 Definition: A large mammal with a trunk, native to Africa and Asia.  
-       Перевод: большое млекопитающее с хоботом.  
-       [📷 Visualization]  [🔊 Pronunciation]  [⭐ Add to Review]
 
-📦 Tech Stack
+DEEPL_API_KEY	(optional) DeepL API key for translation
+🧩 Example Interaction (Text Mode)
+
+User: elephant
+Bot: 🐘 Definition: A large mammal with a trunk, native to Africa and Asia.
+    Перевод: большое млекопитающее с хоботом.
+    [📷 Visualization] [🔊 Pronunciation] [⭐ Add to Review]
+
+💻 Tech Stack
 Category	Technologies
 Core	Python 3.12, python-telegram-bot v21.x, httpx, numpy
 ML/NLP	sentence-transformers, scikit-learn, inflect
@@ -77,7 +86,7 @@ Storage	SQLite (definitions, embeddings, SRS progress)
 APIs	DeepL, Datamuse, Wikimedia Commons, Edge-TTS
 CI/CD	GitHub Actions (ruff + black + smoke import)
 Deployment	Docker + docker-compose
-🧱 Project Structure
+🧩 Project Structure
 fair7-lingo-bot/
 ├── src/
 │   └── tg_vocab_bot.py          # main bot logic
@@ -92,25 +101,13 @@ fair7-lingo-bot/
 🏆 Author
 
 FAIR7 (fair7t) — AI enthusiast, Telegram bot developer, and NLP researcher.
-📎 Telegram Bot
- • 🌐 GitHub Profile
+🌐 GitHub Profile
+
+🤖 Telegram Bot
+ (example link)
 
 🪪 License
 
-This project is licensed under the MIT License
- — feel free to use, modify, and share.
+This project is licensed under the MIT License — feel free to use, modify, and share.
 
-
----
-
-### ✅ Optional next steps
-
-1. Add screenshots to an `/assets` folder and include them under “Example Interaction”.
-2. Pin this repository on your GitHub profile (⚙️ → *Customize your pins* → check ✅ `fair7-lingo-bot`).
-3. Add the project to your CV or portfolio as:  
-   *“Built a semantic-search AI Telegram bot using transformer embeddings (NLP/ML).”*
-
----
-
-> ✨ *FAIR7 LINGO merges Machine Learning and Telegram UX — learn smarter, not harder.*
 
