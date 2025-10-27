@@ -28,7 +28,7 @@ Here’s how **FAIR7 LINGO** works in action 👇
 
 | 🧠 Definition | 🎨 Visualization | 🔄 Synonym & Reverse Search |
 |:--------------:|:----------------:|:---------------------------:|
-| ![Definition Example](assets/demo.png) | ![Visualization Example](assets/demo%202.png) | ![Synonym Example](assets/demo%203.png) |
+| ![Definition Example](Assets/demo.png) | ![Visualization Example](Assets/demo%202.png) | ![Synonym Example](Assets/demo%203.png) |
 
 ### 💬 Description
 - Provides **bilingual word definitions** (English ↔ Russian) with ML-based semantic understanding.  
