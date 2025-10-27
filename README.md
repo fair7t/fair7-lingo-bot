@@ -1,52 +1,36 @@
-# FAIR7 LINGO — Telegram бот для изучения слов (EN↔RU) с ML
+# 🤖 FAIR7 LINGO — AI Vocabulary Telegram Bot
 
-![python](https://img.shields.io/badge/python-3.12-blue)
-![license](https://img.shields.io/badge/license-MIT-green)
-![ptb](https://img.shields.io/badge/python--telegram--bot-21.x-orange)
+![Python](https://img.shields.io/badge/Python-3.12-blue?logo=python)
+![License](https://img.shields.io/badge/License-MIT-green)
+![Telegram](https://img.shields.io/badge/Telegram-Bot-blue?logo=telegram)
+![AI](https://img.shields.io/badge/AI%20Powered-ML%20%2B%20NLP-red)
 
-FAIR7 LINGO — бот, который помогает учить слова:
-- карточка с определениями: **EN список → разделитель → RU список**
-- перевод: **DeepL** (если есть ключ) → fallback **MyMemory**
-- **обратный словарь**: ищет слово по описанию (RU/EN)
-- **синонимы** (Datamuse) + кэш
-- **визуализация** (Wikimedia), **произношение** (edge-tts)
-- **SRS-повторение** (/add, /review)
-- **inline-режим** и **настройки**
+> **FAIR7 LINGO** is an AI-powered Telegram bot that helps users learn English vocabulary through smart bilingual definitions, semantic search, synonyms, text-to-speech, and visual explanations.
 
-## Быстрый старт (локально)
-```bash
-git clone https://github.com/<your-username>/fair7-lingo-bot.git
-cd fair7-lingo-bot
-python -m venv .venv && source .venv/bin/activate    # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-cp .env.example .env
-# вставь TELEGRAM_BOT_TOKEN, при наличии DEEPL_API_KEY — тоже
-python src/tg_vocab_bot.py
-```
+---
 
-## Docker
-```bash
-docker compose up --build -d
-```
+## ✨ Features
 
-## Переменные окружения
-- `TELEGRAM_BOT_TOKEN` — токен от BotFather (**обязательно**)
-- `DEEPL_API_KEY` — ключ DeepL (опционально, повышает качество перевода)
+- 📘 **Bilingual Definitions** — English ⇄ Russian word explanations  
+- 🧠 **Semantic Search (ML)** — find words by meaning or description using sentence-transformers  
+- 🔁 **SRS Repetition** — spaced repetition system (SM-2 algorithm) for efficient memorization  
+- 🎨 **Word Visualization** — automatic image search via Wikimedia Commons API  
+- 🔊 **Pronunciation (TTS)** — speech generation via Edge-TTS (Jenny Neural voice)  
+- 🔗 **Synonyms** — fetched from Datamuse API  
+- ⚡ **High-quality Translation** — DeepL API integration (fallback: MyMemory)  
+- 🧩 **Offline-friendly** — uses local SQLite caching and embeddings  
 
-## Команды
-- `/start` — приветствие
-- `/search <описание>` — поиск слова по описанию
-- `/syn <word>` — синонимы
-- `/add <word>` — добавить в повторение
-- `/review` — режим повторения
-- `/settings` — настройки, `/help` — команды
+---
 
-## Технологии
-- Python 3.12, `python-telegram-bot 21.x`
-- `httpx`, `sentence-transformers (all-MiniLM-L6-v2)`, `numpy`, `inflect`
-- DeepL API (опционально), Datamuse API, Wikimedia Commons API
-- SQLite (кэш, SRS, эмбеддинги)
-- Docker, GitHub Actions
+## 🧠 Machine Learning Behind FAIR7 LINGO
 
-## Лицензия
-[MIT](LICENSE)
+The bot uses a **Transformer-based sentence embedding model**  
+[`sentence-transformers/all-MiniLM-L6-v2`](https://www.sbert.net/docs/pretrained_models.html)  
+to convert text into high-dimensional vector representations.
+
+This enables **semantic similarity search**, so the bot can:
+- find words based on descriptions or paraphrases  
+- rank related terms and synonyms  
+- perform reverse lookup from meaning → word  
+
+### Simplified Architecture
